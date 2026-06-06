@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magical Spell Generator</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      h1 {
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      #spellArea {
+        margin: 20px auto;
+        padding: 30px;
+        width: 80%;
+        max-width: 500px;
+        min-height: 150px;
+        border: 3px solid #fff;
+        border-radius: 15px;
+        background-color: #f0f0f0;
+        font-size: 24px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      button {
+        padding: 15px 30px;
+        font-size: 18px;
+        margin: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      #generateButton {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      #resetButton {
+        background-color: #f44336;
+        color: white;
+      }
+
+      #ingredientsList {
+        list-style-type: none;
+        padding: 0;
+        margin: 20px auto;
+        width: 80%;
+        max-width: 300px;
+      }
+
+      #ingredientsList li {
+        background-color: rgba(255, 255, 255, 0.9);
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Task 1: Set Up the Spellbook -->
+    <h1>Welcome to the Magical Spell Generator!</h1>
+
+    <div id="spellArea"></div>
+
+    <!-- Task 2: Add the Spell Ingredients -->
+    <button id="generateButton">Generate Spell</button>
+
+    <ul id="ingredientsList">
+      <li>Dragon Scale</li>
+      <li>Phoenix Feather</li>
+      <li>Unicorn Horn</li>
+    </ul>
+
+    <!-- Task 6: Add a Reset Button -->
+    <button id="resetButton">Reset</button>
+
+    <!-- Link to external JavaScript file -->
+    <script src="week8_ex01_dom_spell_generator.js"></script>
+  </body>
+</html>

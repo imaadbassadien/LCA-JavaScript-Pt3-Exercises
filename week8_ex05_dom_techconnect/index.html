@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="TechConnect Developer Community Hub - Browse and manage developer directory"
+    />
+    <title>Developer Community Hub | TechConnect</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="bg-primary text-white py-4">
+      <div class="container">
+        <h1 class="display-5 fw-bold">Developer Community Hub</h1>
+        <p class="lead">TechConnect (Pty) Ltd - Internal Directory</p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-4">
+      <!-- Search and Controls Section -->
+      <section class="mb-4" aria-label="Search and controls">
+        <div class="row g-3">
+          <!-- Live Search Bar -->
+          <div class="col-md-6">
+            <label for="searchInput" class="form-label fw-bold"
+              >Search Developers</label
+            >
+            <input
+              type="text"
+              id="searchInput"
+              class="form-control form-control-lg"
+              placeholder="Search by name, role, or skill..."
+              aria-describedby="searchHelp"
+            />
+            <small id="searchHelp" class="form-text text-muted">
+              Filters by name, role, or skill in real time
+            </small>
+          </div>
+
+          <!-- View Toggle Button -->
+          <div class="col-md-6 d-flex align-items-end justify-content-md-end">
+            <button
+              id="viewToggle"
+              class="btn btn-outline-primary btn-lg"
+              type="button"
+            >
+              <span id="toggleIcon">💳</span>
+              <span id="toggleText">Card View</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Live Counter -->
+      <section class="mb-3" aria-label="Developer count">
+        <div class="alert alert-info d-flex align-items-center">
+          <span class="badge bg-primary me-2 fs-5">📊</span>
+          <strong>Showing </strong>
+          <span id="developerCount" class="fw-bold mx-2 fs-4">0</span>
+          <strong> developer(s)</strong>
+        </div>
+      </section>
+
+      <!-- Add Developer Form -->
+      <section class="mb-5" aria-label="Add new developer">
+        <div class="card">
+          <div class="card-header bg-success text-white">
+            <h2 class="h5 fw-bold">➕ Add New Developer</h2>
+          </div>
+          <div class="card-body">
+            <form id="addDeveloperForm" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="devName" class="form-label fw-bold">Name *</label>
+                  <input
+                    type="text"
+                    id="devName"
+                    class="form-control"
+                    required
+                    minlength="2"
+                    maxlength="100"
+                    placeholder="Full name"
+                  />
+                  <div class="invalid-feedback">
+                    Name must be at least 2 characters.
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="devRole" class="form-label fw-bold">Role *</label>
+                  <input
+                    type="text"
+                    id="devRole"
+                    class="form-control"
+                    required
+                    minlength="2"
+                    maxlength="50"
+                    placeholder="e.g., Frontend Developer"
+                  />
+                  <div class="invalid-feedback">
+                    Role must be at least 2 characters.
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <label for="devSkills" class="form-label fw-bold"
+                    >Skills (comma-separated) *</label
+                  >
+                  <input
+                    type="text"
+                    id="devSkills"
+                    class="form-control"
+                    required
+                    placeholder="e.g., JavaScript, React, CSS"
+                  />
+                  <div class="invalid-feedback">
+                    Please enter at least one skill.
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="devLocation" class="form-label fw-bold"
+                    >Location *</label
+                  >
+                  <input
+                    type="text"
+                    id="devLocation"
+                    class="form-control"
+                    required
+                    minlength="2"
+                    maxlength="100"
+                    placeholder="e.g., Cape Town"
+                  />
+                  <div class="invalid-feedback">Location is required.</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="devAvatar" class="form-label fw-bold"
+                    >Avatar URL (optional)</label
+                  >
+                  <input
+                    type="url"
+                    id="devAvatar"
+                    class="form-control"
+                    placeholder="https://example.com/avatar.jpg"
+                  />
+                  <small class="form-text text-muted"
+                    >Leave empty for no avatar</small
+                  >
+                </div>
+
+                <div class="col-md-12">
+                  <label class="form-label fw-bold">Available for Hire</label>
+                  <div class="mt-2">
+                    <input
+                      type="checkbox"
+                      id="devAvailable"
+                      class="form-check-input"
+                    />
+                    <label for="devAvailable" class="form-check-label">
+                      Mark as available for hire
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <button type="submit" class="btn btn-success btn-lg">
+                  ➕ Add Developer to Directory
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Developer Directory -->
+      <section aria-label="Developer directory">
+        <h2 class="h4 fw-bold mb-3">👥 Developer Directory</h2>
+
+        <!-- Card View (Default) -->
+        <div id="cardView" class="row g-4">
+          <!-- Cards will be dynamically inserted here -->
+        </div>
+
+        <!-- Table View (Hidden by default) -->
+        <div id="tableView" class="card d-none">
+          <div class="card-body p-0">
+            <table class="table table-hover table-striped mb-0">
+              <thead class="table-dark">
+                <tr>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Skills</th>
+                  <th>Location</th>
+                  <th>Available</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+                <!-- Table rows will be dynamically inserted here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3 mt-5">
+      <div class="container text-center">
+        <p class="mb-0">
+          &copy; 2026 TechConnect (Pty) Ltd. All rights reserved.
+        </p>
+        <p class="mb-0 small">Developer Community Hub - Internal Directory</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vanilla JavaScript -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

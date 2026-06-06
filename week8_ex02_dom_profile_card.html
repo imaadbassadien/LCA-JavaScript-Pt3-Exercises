@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Profile Card</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      #profileCard {
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: 30px;
+        width: 350px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+      }
+
+      #profileCard.active-status {
+        background-color: #d4edda;
+        border: 2px solid #28a745;
+      }
+
+      #profileImage {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+        object-fit: cover;
+      }
+
+      #profileName {
+        color: #333;
+        margin: 10px 0;
+        font-size: 24px;
+      }
+
+      #profileRole {
+        color: #666;
+        font-size: 16px;
+        margin: 5px 0;
+      }
+
+      #profileBio {
+        color: #888;
+        font-size: 14px;
+        margin: 15px 0;
+        line-height: 1.5;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 14px;
+        margin: 5px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      #updateNameBtn {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      #updateRoleBtn {
+        background-color: #2196f3;
+        color: white;
+      }
+
+      #toggleStatusBtn {
+        background-color: #ff9800;
+        color: white;
+      }
+
+      #changeImageBtn {
+        background-color: #9c27b0;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Task 1: Set Up the Profile Card -->
+    <div id="profileCard">
+      <img
+        id="profileImage"
+        src="https://placehold.co/100x100"
+        alt="Profile Image"
+      />
+      <h2 id="profileName">John Doe</h2>
+      <p id="profileRole">Software Developer</p>
+      <p id="profileBio">
+        Passionate about coding and learning new technologies.
+      </p>
+
+      <button id="updateNameBtn">Update Name</button>
+      <button id="updateRoleBtn">Update Role</button>
+      <button id="toggleStatusBtn">Toggle Active Status</button>
+
+      <!-- Task 4: Change Profile Image (Bonus) -->
+      <button id="changeImageBtn">Change Image</button>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="week8_ex02_dom_profile_card.js"></script>
+  </body>
+</html>
